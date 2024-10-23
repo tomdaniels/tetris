@@ -12,6 +12,7 @@ Game::Game() {
 
 Block Game::getRandomBlock() {
   if (blocks.empty()) {
+    blocks = getAllBlocks();
   }
 
   int randomIndex = rand() % blocks.size();
@@ -26,7 +27,6 @@ std::vector<Block> Game::getAllBlocks() {
 }
 
 void Game::draw() {
-
   grid.draw();
   currentBlock.draw();
 }
