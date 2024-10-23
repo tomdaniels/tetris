@@ -14,7 +14,7 @@ int main() {
   SetTargetFPS(60);
 
   Grid grid;
-  ZBlock block;
+  IBlock block;
   grid.debug();
 
   while (!WindowShouldClose()) {
