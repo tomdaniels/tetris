@@ -36,35 +36,36 @@ void Game::handleInput() {
 
   switch (keypressed) {
   case KEY_LEFT:
-    moveLeft();
+    moveBlockLeft();
     break;
   case KEY_RIGHT:
-    moveRight();
+    moveBlockRight();
     break;
   case KEY_DOWN:
-    moveDown();
+    moveBlockDown();
     break;
   case KEY_UP:
     rotateBlock();
   }
 }
 
-void Game::moveLeft() {
+void Game::moveBlockLeft() {
   currentBlock.move(0, -1);
   if (isBlockOutOfBounds()) {
     currentBlock.move(0, 1);
   }
 };
-void Game::moveRight() {
+void Game::moveBlockRight() {
   currentBlock.move(0, 1);
   if (isBlockOutOfBounds()) {
     currentBlock.move(0, -1);
   }
 };
-void Game::moveDown() {
+void Game::moveBlockDown() {
   currentBlock.move(1, 0);
   if (isBlockOutOfBounds()) {
     currentBlock.move(-1, 0);
+    lockBlock();
   }
 };
 
@@ -83,4 +84,13 @@ void Game::rotateBlock() {
   if (isBlockOutOfBounds()) {
     currentBlock.undoRotate();
   }
+}
+
+void Game::lockBlock() {
+  for (Position item : currentBlock.getCellPositions()) {
+    grid.grid[item.row][item.column] = currentBlock.id;
+  }
+
+  currentBlock = nextBlock;
+  nextBlock = getRandomBlock();
 }

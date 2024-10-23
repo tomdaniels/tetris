@@ -5,6 +5,17 @@
 const int windowWidth = 300;
 const int windowHeight = 600;
 
+double lastUpdatedTime = 0;
+
+bool TimeElapsed(double interval) {
+  double currentTime = GetTime();
+  if (currentTime - lastUpdatedTime >= interval) {
+    lastUpdatedTime = currentTime;
+    return true;
+  }
+  return false;
+}
+
 Color deepBlue = {44, 44, 127, 255};
 
 int main() {
@@ -14,11 +25,16 @@ int main() {
   Game game;
 
   while (!WindowShouldClose()) {
-    game.handleInput();
-
     BeginDrawing();
     ClearBackground(deepBlue);
+
+    game.handleInput();
+
     game.draw();
+
+    if (TimeElapsed(0.2)) {
+      game.moveBlockDown();
+    }
 
     EndDrawing();
   }

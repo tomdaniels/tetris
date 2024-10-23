@@ -12,5 +12,5 @@ inline const Color cyan = {21, 204, 209, 255};
 inline const Color blue = {13, 64, 216, 255};
 inline const Color red = {228, 21, 20, 255};
 
-std::vector<Color> inline cellColours{darkGray, green, orange, yellow,
-                                      purple,   cyan,  blue,   red};
+inline static std::vector<Color> cellColours{darkGray, green, orange, yellow,
+                                             purple,   cyan,  blue,   red};

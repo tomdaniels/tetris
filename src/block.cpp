@@ -18,28 +18,17 @@ void Block::move(int rows, int columns) {
 }
 
 std::vector<Position> Block::getCellPositions() {
-  std::vector<Position> tiles = cells[rotationState];
   std::vector<Position> movedTiles;
-
-  for (Position item : tiles) {
-    Position newPos =
-        Position(item.row + rowOffset, item.column + columnOffset);
-    movedTiles.push_back(newPos);
+  for (Position item : cells[rotationState]) {
+    movedTiles.emplace_back(item.row + rowOffset, item.column + columnOffset);
   }
-
   return movedTiles;
 }
 
 void Block::rotate() {
-  rotationState++;
-  if (rotationState == (int)cells.size()) {
-    rotationState = 0;
-  }
+  rotationState = (rotationState + 1) % (int)cells.size();
 }
 
 void Block::undoRotate() {
-  rotationState--;
-  if (rotationState == -1) {
-    rotationState = cells.size() - 1;
-  }
+  rotationState = (rotationState + ((int)cells.size() - 1)) % (int)cells.size();
 }

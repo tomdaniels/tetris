@@ -12,14 +12,15 @@ public:
 
   void draw();
   void handleInput();
-  void moveLeft();
-  void moveRight();
-  void moveDown();
+  void moveBlockLeft();
+  void moveBlockRight();
+  void moveBlockDown();
 
 private:
   std::vector<Block> blocks;
   Block currentBlock;
   Block nextBlock;
   bool isBlockOutOfBounds();
+  void lockBlock();
   void rotateBlock();
 };
