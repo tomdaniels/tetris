@@ -1,8 +1,6 @@
-#include "grid.h"
+#include "game.h"
 #include <cstdio>
 #include <raylib.h>
-
-#include "blocks.cpp"
 
 const int windowWidth = 300;
 const int windowHeight = 600;
@@ -13,15 +11,12 @@ int main() {
   InitWindow(windowWidth, windowHeight, "Tetris");
   SetTargetFPS(60);
 
-  Grid grid;
-  IBlock block;
-  grid.debug();
+  Game game;
 
   while (!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(deepBlue);
-    grid.draw();
-    block.draw();
+    game.draw();
 
     EndDrawing();
   }
