@@ -45,6 +45,31 @@ void Game::handleInput() {
   }
 }
 
-void Game::moveLeft() { currentBlock.move(0, -1); };
-void Game::moveRight() { currentBlock.move(0, 1); };
-void Game::moveDown() { currentBlock.move(1, 0); };
+void Game::moveLeft() {
+  currentBlock.move(0, -1);
+  if (isBlockOutOfBounds()) {
+    currentBlock.move(0, 1);
+  }
+};
+void Game::moveRight() {
+  currentBlock.move(0, 1);
+  if (isBlockOutOfBounds()) {
+    currentBlock.move(0, -1);
+  }
+};
+void Game::moveDown() {
+  currentBlock.move(1, 0);
+  if (isBlockOutOfBounds()) {
+    currentBlock.move(-1, 0);
+  }
+};
+
+bool Game::isBlockOutOfBounds() {
+  for (Position item : currentBlock.getCellPositions()) {
+    if (grid.isOutOfBounds(item.row, item.column)) {
+      return true;
+    }
+  }
+
+  return false;
+}

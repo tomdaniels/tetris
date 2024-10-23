@@ -11,13 +11,13 @@ public:
   void draw();
   void move(int rows, int columns);
   std::map<int, std::vector<Position>> cells;
+  std::vector<Position> getCellPositions();
 
 private:
   int cellSize = 30;
   int rotationState = 0;
   std::vector<Color> colours = cellColours;
 
-  std::vector<Position> getCellPositions();
   int rowOffset = 0;
   int columnOffset = 0;
 };

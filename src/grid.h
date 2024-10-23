@@ -12,6 +12,7 @@ public:
   void debug();
   int grid[20][10];
   std::vector<Color> colours = cellColours;
+  bool isOutOfBounds(int row, int column);
 
 private:
   int rowCount = 20;

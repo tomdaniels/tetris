@@ -8,9 +8,7 @@ public:
   Game();
   Grid grid;
   Block getRandomBlock();
-
-  Block currentBlock;
-  Block nextBlock;
+  std::vector<Block> getAllBlocks();
 
   void draw();
   void handleInput();
@@ -20,5 +18,7 @@ public:
 
 private:
   std::vector<Block> blocks;
-  std::vector<Block> getAllBlocks();
+  Block currentBlock;
+  Block nextBlock;
+  bool isBlockOutOfBounds();
 };

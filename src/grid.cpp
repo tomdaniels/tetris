@@ -31,3 +31,11 @@ void Grid::debug() {
     std::cout << std::endl;
   };
 }
+
+bool Grid::isOutOfBounds(int row, int column) {
+  if (row >= 0 && row < rowCount && column >= 0 && column < colCount) {
+    return false;
+  }
+
+  return true;
+}
