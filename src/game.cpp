@@ -26,6 +26,7 @@ std::vector<Block> Game::getAllBlocks() {
 }
 
 void Game::draw() {
+
   grid.draw();
   currentBlock.draw();
 }
@@ -42,6 +43,9 @@ void Game::handleInput() {
     break;
   case KEY_DOWN:
     moveDown();
+    break;
+  case KEY_UP:
+    rotateBlock();
   }
 }
 
@@ -72,4 +76,11 @@ bool Game::isBlockOutOfBounds() {
   }
 
   return false;
+}
+
+void Game::rotateBlock() {
+  currentBlock.rotate();
+  if (isBlockOutOfBounds()) {
+    currentBlock.undoRotate();
+  }
 }

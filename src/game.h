@@ -21,4 +21,5 @@ private:
   Block currentBlock;
   Block nextBlock;
   bool isBlockOutOfBounds();
+  void rotateBlock();
 };
