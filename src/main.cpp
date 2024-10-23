@@ -14,6 +14,8 @@ int main() {
   Game game;
 
   while (!WindowShouldClose()) {
+    game.handleInput();
+
     BeginDrawing();
     ClearBackground(deepBlue);
     game.draw();

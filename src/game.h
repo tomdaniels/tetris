@@ -13,6 +13,10 @@ public:
   Block nextBlock;
 
   void draw();
+  void handleInput();
+  void moveLeft();
+  void moveRight();
+  void moveDown();
 
 private:
   std::vector<Block> blocks;
