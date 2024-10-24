@@ -51,19 +51,19 @@ void Game::handleInput() {
 
 void Game::moveBlockLeft() {
   currentBlock.move(0, -1);
-  if (isBlockOutOfBounds()) {
+  if (isBlockOutOfBounds() || !doesBlockFit()) {
     currentBlock.move(0, 1);
   }
 };
 void Game::moveBlockRight() {
   currentBlock.move(0, 1);
-  if (isBlockOutOfBounds()) {
+  if (isBlockOutOfBounds() || !doesBlockFit()) {
     currentBlock.move(0, -1);
   }
 };
 void Game::moveBlockDown() {
   currentBlock.move(1, 0);
-  if (isBlockOutOfBounds()) {
+  if (isBlockOutOfBounds() || !doesBlockFit()) {
     currentBlock.move(-1, 0);
     lockBlock();
   }
@@ -93,4 +93,14 @@ void Game::lockBlock() {
 
   currentBlock = nextBlock;
   nextBlock = getRandomBlock();
+}
+
+bool Game::doesBlockFit() {
+  for (Position item : currentBlock.getCellPositions()) {
+    if (!grid.isCellEmpty(item.row, item.column)) {
+      return false;
+    }
+  }
+
+  return true;
 }

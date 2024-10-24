@@ -21,6 +21,7 @@ private:
   Block currentBlock;
   Block nextBlock;
   bool isBlockOutOfBounds();
+  bool doesBlockFit();
   void lockBlock();
   void rotateBlock();
 };
