@@ -34,6 +34,11 @@ void Game::draw() {
 void Game::handleInput() {
   int keypressed = GetKeyPressed();
 
+  if (isGameOver && keypressed != 0) {
+    isGameOver = false;
+    reset();
+  }
+
   switch (keypressed) {
   case KEY_LEFT:
     moveBlockLeft();
@@ -108,4 +113,11 @@ bool Game::doesBlockFit() {
   }
 
   return true;
+}
+
+void Game::reset() {
+  grid.initialize();
+  blocks = getAllBlocks();
+  currentBlock = getRandomBlock();
+  nextBlock = getRandomBlock();
 }
