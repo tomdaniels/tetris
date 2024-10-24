@@ -92,6 +92,10 @@ void Game::lockBlock() {
   }
 
   currentBlock = nextBlock;
+  if (!doesBlockFit()) {
+    isGameOver = true;
+  }
+
   nextBlock = getRandomBlock();
   grid.clearFullRows();
 }

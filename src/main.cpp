@@ -32,7 +32,7 @@ int main() {
 
     game.draw();
 
-    if (TimeElapsed(0.2)) {
+    if (TimeElapsed(0.02) && !game.isGameOver) {
       game.moveBlockDown();
     }
 

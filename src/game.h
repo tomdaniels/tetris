@@ -16,6 +16,8 @@ public:
   void moveBlockRight();
   void moveBlockDown();
 
+  bool isGameOver = false;
+
 private:
   std::vector<Block> blocks;
   Block currentBlock;
