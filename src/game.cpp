@@ -8,12 +8,12 @@ Game::Game() {
   blocks = getAllBlocks();
   currentBlock = getRandomBlock();
   nextBlock = getRandomBlock();
+
   InitAudioDevice();
   music = LoadMusicStream("src/assets/music.mp3");
-  PlayMusicStream(music);
-
   rotateSound = LoadSound("src/assets/rotate.mp3");
   clearSound = LoadSound("src/assets/clear.mp3");
+  PlayMusicStream(music);
 }
 
 Game::~Game() {
