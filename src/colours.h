@@ -1,8 +1,11 @@
 #pragma once
 
 #include <raylib.h>
-
 #include <vector>
+
+inline const Color deepBlue = {44, 44, 127, 255};
+inline const Color lightBlue = {59, 85, 162, 255};
+
 inline const Color darkGray = {26, 31, 40, 255};
 inline const Color green = {47, 230, 23, 255};
 inline const Color orange = {226, 116, 17, 255};

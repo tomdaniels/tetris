@@ -28,7 +28,18 @@ std::vector<Block> Game::getAllBlocks() {
 
 void Game::draw() {
   grid.draw();
-  currentBlock.draw();
+  currentBlock.draw(11, 11);
+
+  switch (nextBlock.id) {
+  case 3:
+    nextBlock.draw(275, 285);
+    break;
+  case 4:
+    nextBlock.draw(275, 270);
+    break;
+  default:
+    nextBlock.draw(290, 270);
+  }
 }
 
 void Game::handleInput() {
@@ -48,6 +59,7 @@ void Game::handleInput() {
     break;
   case KEY_DOWN:
     moveBlockDown();
+    updateScore(0, 1);
     break;
   case KEY_UP:
     rotateBlock();
@@ -102,7 +114,8 @@ void Game::lockBlock() {
   }
 
   nextBlock = getRandomBlock();
-  grid.clearFullRows();
+  int rowsCleared = grid.clearFullRows();
+  updateScore(rowsCleared, 0);
 }
 
 bool Game::doesBlockFit() {
@@ -120,4 +133,23 @@ void Game::reset() {
   blocks = getAllBlocks();
   currentBlock = getRandomBlock();
   nextBlock = getRandomBlock();
+  score = 0;
+}
+
+void Game::updateScore(int linesCleared, int moveDownPoints) {
+  switch (linesCleared) {
+  case 1:
+    score += 100;
+    break;
+  case 2:
+    score += 300;
+    break;
+  case 3:
+    score += 500;
+    break;
+  default:
+    break;
+  }
+
+  score += moveDownPoints;
 }

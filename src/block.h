@@ -8,7 +8,7 @@ class Block {
 public:
   Block();
   int id;
-  void draw();
+  void draw(int offsetX, int offsetY);
   void rotate();
   void undoRotate();
   void move(int rows, int columns);
