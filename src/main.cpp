@@ -1,5 +1,6 @@
 #include "colours.h"
 #include "game.h"
+#include "ui.h"
 #include <cstdio>
 #include <raylib.h>
 
@@ -22,23 +23,14 @@ int main() {
   SetTargetFPS(60);
 
   Game game;
+  UI ui;
 
   while (!WindowShouldClose()) {
     UpdateMusicStream(game.music);
     BeginDrawing();
     ClearBackground(deepBlue);
-    DrawText("Score", 360, 15, 38, WHITE);
-    DrawText("Next", 375, 175, 38, WHITE);
-    if (game.isGameOver) {
-      DrawText("Game Over!", 320, 450, 38, WHITE);
-    }
-    DrawRectangleRounded({320, 55, 200, 60}, 0.3, 6, lightBlue);
-    DrawRectangleRounded({320, 215, 200, 180}, 0.3, 6, lightBlue);
 
-    char scoreText[10];
-    sprintf(scoreText, "%d", game.score);
-    int textWidth = MeasureText(scoreText, 38);
-    DrawText(scoreText, 360 + (120 - textWidth) / 2, 65, 38, WHITE);
+    ui.paint(game.score, game.isGameOver);
 
     game.handleInput();
 
