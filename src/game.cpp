@@ -22,13 +22,13 @@ Game::~Game() {
 }
 
 Block Game::getRandomBlock() {
-  if (blocks.empty()) {
-    blocks = allBlocks;
+  if (blocksToChooseFrom.empty()) {
+    blocksToChooseFrom = allPossibleBlocks;
   }
 
-  int randomIndex = rand() % blocks.size();
-  Block block = blocks[randomIndex];
-  blocks.erase(blocks.begin() + randomIndex);
+  int randomIndex = rand() % blocksToChooseFrom.size();
+  Block block = blocksToChooseFrom[randomIndex];
+  blocksToChooseFrom.erase(blocksToChooseFrom.begin() + randomIndex);
 
   return block;
 }
@@ -134,7 +134,7 @@ bool Game::doesBlockFit() {
 
 void Game::reset() {
   grid.initialize();
-  blocks = allBlocks;
+  blocksToChooseFrom = allPossibleBlocks;
   currentBlock = getRandomBlock();
   nextBlock = getRandomBlock();
   score = 0;

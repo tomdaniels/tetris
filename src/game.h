@@ -25,9 +25,9 @@ public:
 private:
   Grid grid;
   Block currentBlock;
-  std::vector<Block> allBlocks{IBlock(), JBlock(), LBlock(), OBlock(),
-                               SBlock(), TBlock(), ZBlock()};
-  std::vector<Block> blocks = allBlocks;
+  std::vector<Block> allPossibleBlocks{IBlock(), JBlock(), LBlock(), OBlock(),
+                                       SBlock(), TBlock(), ZBlock()};
+  std::vector<Block> blocksToChooseFrom = allPossibleBlocks;
 
   bool isBlockOutOfBounds();
   bool doesBlockFit();
