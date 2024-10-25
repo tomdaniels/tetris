@@ -43,16 +43,7 @@ void Game::draw() {
   grid.draw();
   currentBlock.draw(11, 11);
 
-  switch (nextBlock.id) {
-  case 3:
-    nextBlock.draw(275, 285);
-    break;
-  case 4:
-    nextBlock.draw(275, 270);
-    break;
-  default:
-    nextBlock.draw(290, 270);
-  }
+  ui.paint(score, nextBlock, isGameOver);
 }
 
 void Game::handleInput() {
@@ -185,7 +176,7 @@ bool TimeElapsed(double interval) {
 }
 
 void Game::tick() {
-  if (TimeElapsed(0.2) && !isGameOver) {
+  if (!isGameOver && TimeElapsed(0.2)) {
     moveBlockDown();
   }
 }

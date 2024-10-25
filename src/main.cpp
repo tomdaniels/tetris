@@ -1,6 +1,5 @@
 #include "colours.h"
 #include "game.h"
-#include "ui.h"
 #include <cstdio>
 #include <raylib.h>
 
@@ -11,7 +10,6 @@ int main() {
   InitWindow(windowWidth, windowHeight, "Tetris");
   SetTargetFPS(60);
 
-  UI ui;
   Game game;
 
   while (!WindowShouldClose()) {
@@ -19,7 +17,6 @@ int main() {
     BeginDrawing();
     ClearBackground(deepBlue);
 
-    ui.paint(game.score, game.isGameOver);
     game.handleInput();
     game.draw();
     game.tick();

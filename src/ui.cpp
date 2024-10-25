@@ -1,11 +1,12 @@
 #include "ui.h"
+#include "block.h"
 #include "colours.h"
 #include <iostream>
 #include <raylib.h>
 
-void UI::paint(int score, bool isGameOver) {
+void UI::paint(int score, Block nextBlock, bool isGameOver) {
   drawScore(score);
-  drawNextBlock();
+  drawNextBlock(nextBlock);
   drawGameOver(isGameOver);
 }
 
@@ -19,9 +20,20 @@ void UI::drawScore(int score) {
   DrawText(scoreText, 360 + (120 - textWidth) / 2, 65, 38, WHITE);
 }
 
-void UI::drawNextBlock() {
+void UI::drawNextBlock(Block nextBlock) {
   DrawText("Next", 375, 175, 38, WHITE);
   DrawRectangleRounded({320, 215, 200, 180}, 0.3, 6, lightBlue);
+
+  switch (nextBlock.id) {
+  case 3:
+    nextBlock.draw(275, 285);
+    break;
+  case 4:
+    nextBlock.draw(275, 270);
+    break;
+  default:
+    nextBlock.draw(290, 270);
+  }
 }
 
 void UI::drawGameOver(bool isGameOver) {

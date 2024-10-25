@@ -2,6 +2,7 @@
 
 #include "blocks.cpp"
 #include "grid.h"
+#include "ui.h"
 
 class Game {
 public:
@@ -17,14 +18,15 @@ public:
 
   int score = 0;
   bool isGameOver = false;
+  Block nextBlock;
 
+  UI ui;
   Music music;
 
 private:
   Grid grid;
   std::vector<Block> blocks;
   Block currentBlock;
-  Block nextBlock;
   bool isBlockOutOfBounds();
   bool doesBlockFit();
   void lockBlock();
