@@ -172,3 +172,20 @@ void Game::updateScore(int linesCleared, int moveDownPoints) {
 
   score += moveDownPoints;
 }
+
+double lastUpdatedTime = 0;
+
+bool TimeElapsed(double interval) {
+  double currentTime = GetTime();
+  if (currentTime - lastUpdatedTime >= interval) {
+    lastUpdatedTime = currentTime;
+    return true;
+  }
+  return false;
+}
+
+void Game::tick() {
+  if (TimeElapsed(0.2) && !isGameOver) {
+    moveBlockDown();
+  }
+}

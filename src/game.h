@@ -12,6 +12,7 @@ public:
 
   void draw();
   void handleInput();
+  void tick();
   void moveBlockDown();
 
   int score = 0;
