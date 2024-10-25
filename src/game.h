@@ -8,25 +8,27 @@ class Game {
 public:
   Game();
   ~Game();
-  Block getRandomBlock();
-  std::vector<Block> getAllBlocks();
 
   void draw();
   void handleInput();
   void tick();
-  void moveBlockDown();
 
   int score = 0;
   bool isGameOver = false;
   Block nextBlock;
+  void moveBlockDown();
+  Block getRandomBlock();
 
   UI ui;
   Music music;
 
 private:
   Grid grid;
-  std::vector<Block> blocks;
   Block currentBlock;
+  std::vector<Block> allBlocks{IBlock(), JBlock(), LBlock(), OBlock(),
+                               SBlock(), TBlock(), ZBlock()};
+  std::vector<Block> blocks = allBlocks;
+
   bool isBlockOutOfBounds();
   bool doesBlockFit();
   void lockBlock();
