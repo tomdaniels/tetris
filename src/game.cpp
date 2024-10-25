@@ -33,7 +33,7 @@ Block Game::getRandomBlock() {
   return block;
 }
 
-void Game::draw() {
+void Game::render() {
   grid.draw();
   currentBlock.draw(11, 11);
 

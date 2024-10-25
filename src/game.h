@@ -9,9 +9,9 @@ public:
   Game();
   ~Game();
 
-  void draw();
   void handleInput();
   void tick();
+  void render();
 
   int score = 0;
   bool isGameOver = false;

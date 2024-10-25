@@ -18,8 +18,8 @@ int main() {
     ClearBackground(deepBlue);
 
     game.handleInput();
-    game.draw();
     game.tick();
+    game.render();
 
     EndDrawing();
   }
