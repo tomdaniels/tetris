@@ -4,8 +4,6 @@
 #include <vector>
 
 Game::Game() {
-  Grid grid;
-  blocks = getAllBlocks();
   currentBlock = getRandomBlock();
   nextBlock = getRandomBlock();
 
@@ -25,7 +23,7 @@ Game::~Game() {
 
 Block Game::getRandomBlock() {
   if (blocks.empty()) {
-    blocks = getAllBlocks();
+    blocks = allBlocks;
   }
 
   int randomIndex = rand() % blocks.size();
@@ -33,10 +31,6 @@ Block Game::getRandomBlock() {
   blocks.erase(blocks.begin() + randomIndex);
 
   return block;
-}
-
-std::vector<Block> Game::getAllBlocks() {
-  return {IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()};
 }
 
 void Game::draw() {
@@ -140,7 +134,7 @@ bool Game::doesBlockFit() {
 
 void Game::reset() {
   grid.initialize();
-  blocks = getAllBlocks();
+  blocks = allBlocks;
   currentBlock = getRandomBlock();
   nextBlock = getRandomBlock();
   score = 0;
