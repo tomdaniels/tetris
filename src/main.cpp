@@ -24,6 +24,7 @@ int main() {
   Game game;
 
   while (!WindowShouldClose()) {
+    UpdateMusicStream(game.music);
     BeginDrawing();
     ClearBackground(deepBlue);
     DrawText("Score", 360, 15, 38, WHITE);
