@@ -9,15 +9,15 @@ public:
   Game();
   ~Game();
 
-  void handleInput();
-  void tick();
-  void render();
+  void HandleInput();
+  void Tick();
+  void Render();
 
   int score = 0;
   bool isGameOver = false;
   Block nextBlock;
-  void moveBlockDown();
-  Block getRandomBlock();
+  void MoveBlockDown();
+  Block GetRandomBlock();
 
   UI ui;
   Music music;
@@ -29,14 +29,14 @@ private:
                                        SBlock(), TBlock(), ZBlock()};
   std::vector<Block> blocksToChooseFrom = allPossibleBlocks;
 
-  bool isBlockOutOfBounds();
-  bool doesBlockFit();
-  void lockBlock();
-  void rotateBlock();
-  void reset();
-  void updateScore(int linesCleared, int moveDownPoints);
-  void moveBlockLeft();
-  void moveBlockRight();
+  bool IsBlockOutOfBounds();
+  bool DoesBlockFit();
+  void LockBlock();
+  void RotateBlock();
+  void Reset();
+  void UpdateScore(int linesCleared, int moveDownPoints);
+  void MoveBlockLeft();
+  void MoveBlockRight();
 
   Sound rotateSound;
   Sound clearSound;

@@ -4,10 +4,10 @@
 
 class UI {
 public:
-  void paint(int score, Block nextBlock, bool isGameOver);
+  void Paint(int score, Block nextBlock, bool isGameOver);
 
 private:
-  void drawScore(int score);
-  void drawNextBlock(Block nextBlock);
-  void drawGameOver(bool isGameOver);
+  void DrawScore(int score);
+  void DrawNextBlock(Block nextBlock);
+  void DrawGameOver(bool isGameOver);
 };

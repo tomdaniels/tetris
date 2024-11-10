@@ -4,8 +4,8 @@
 #include <vector>
 
 Game::Game() {
-  currentBlock = getRandomBlock();
-  nextBlock = getRandomBlock();
+  currentBlock = GetRandomBlock();
+  nextBlock = GetRandomBlock();
 
   InitAudioDevice();
   music = LoadMusicStream("src/assets/music.mp3");
@@ -21,7 +21,7 @@ Game::~Game() {
   CloseAudioDevice();
 }
 
-Block Game::getRandomBlock() {
+Block Game::GetRandomBlock() {
   if (blocksToChooseFrom.empty()) {
     blocksToChooseFrom = allPossibleBlocks;
   }
@@ -33,60 +33,60 @@ Block Game::getRandomBlock() {
   return block;
 }
 
-void Game::render() {
-  grid.draw();
-  currentBlock.draw(11, 11);
+void Game::Render() {
+  grid.Draw();
+  currentBlock.Draw(11, 11);
 
-  ui.paint(score, nextBlock, isGameOver);
+  ui.Paint(score, nextBlock, isGameOver);
 }
 
-void Game::handleInput() {
+void Game::HandleInput() {
   int keypressed = GetKeyPressed();
 
   if (isGameOver && keypressed != 0) {
     isGameOver = false;
-    reset();
+    Reset();
   }
 
   switch (keypressed) {
   case KEY_LEFT:
-    moveBlockLeft();
+    MoveBlockLeft();
     break;
   case KEY_RIGHT:
-    moveBlockRight();
+    MoveBlockRight();
     break;
   case KEY_DOWN:
-    moveBlockDown();
-    updateScore(0, 1);
+    MoveBlockDown();
+    UpdateScore(0, 1);
     break;
   case KEY_UP:
-    rotateBlock();
+    RotateBlock();
   }
 }
 
-void Game::moveBlockLeft() {
-  currentBlock.move(0, -1);
-  if (isBlockOutOfBounds() || !doesBlockFit()) {
-    currentBlock.move(0, 1);
+void Game::MoveBlockLeft() {
+  currentBlock.Move(0, -1);
+  if (IsBlockOutOfBounds() || !DoesBlockFit()) {
+    currentBlock.Move(0, 1);
   }
 };
-void Game::moveBlockRight() {
-  currentBlock.move(0, 1);
-  if (isBlockOutOfBounds() || !doesBlockFit()) {
-    currentBlock.move(0, -1);
+void Game::MoveBlockRight() {
+  currentBlock.Move(0, 1);
+  if (IsBlockOutOfBounds() || !DoesBlockFit()) {
+    currentBlock.Move(0, -1);
   }
 };
-void Game::moveBlockDown() {
-  currentBlock.move(1, 0);
-  if (isBlockOutOfBounds() || !doesBlockFit()) {
-    currentBlock.move(-1, 0);
-    lockBlock();
+void Game::MoveBlockDown() {
+  currentBlock.Move(1, 0);
+  if (IsBlockOutOfBounds() || !DoesBlockFit()) {
+    currentBlock.Move(-1, 0);
+    LockBlock();
   }
 };
 
-bool Game::isBlockOutOfBounds() {
-  for (Position item : currentBlock.getCellPositions()) {
-    if (grid.isOutOfBounds(item.row, item.column)) {
+bool Game::IsBlockOutOfBounds() {
+  for (Position item : currentBlock.GetCellPositions()) {
+    if (grid.IsOutOfBounds(item.row, item.column)) {
       return true;
     }
   }
@@ -94,37 +94,37 @@ bool Game::isBlockOutOfBounds() {
   return false;
 }
 
-void Game::rotateBlock() {
-  currentBlock.rotate();
-  if (isBlockOutOfBounds()) {
-    currentBlock.undoRotate();
+void Game::RotateBlock() {
+  currentBlock.Rotate();
+  if (IsBlockOutOfBounds()) {
+    currentBlock.UndoRotate();
   } else {
     PlaySound(rotateSound);
   }
 }
 
-void Game::lockBlock() {
-  for (Position item : currentBlock.getCellPositions()) {
+void Game::LockBlock() {
+  for (Position item : currentBlock.GetCellPositions()) {
     grid.grid[item.row][item.column] = currentBlock.id;
   }
 
   currentBlock = nextBlock;
-  if (!doesBlockFit()) {
+  if (!DoesBlockFit()) {
     isGameOver = true;
   }
 
-  nextBlock = getRandomBlock();
-  int rowsCleared = grid.clearFullRows();
+  nextBlock = GetRandomBlock();
+  int rowsCleared = grid.ClearFullRows();
   if (rowsCleared > 0) {
 
     PlaySound(clearSound);
-    updateScore(rowsCleared, 0);
+    UpdateScore(rowsCleared, 0);
   }
 }
 
-bool Game::doesBlockFit() {
-  for (Position item : currentBlock.getCellPositions()) {
-    if (!grid.isCellEmpty(item.row, item.column)) {
+bool Game::DoesBlockFit() {
+  for (Position item : currentBlock.GetCellPositions()) {
+    if (!grid.IsCellEmpty(item.row, item.column)) {
       return false;
     }
   }
@@ -132,15 +132,15 @@ bool Game::doesBlockFit() {
   return true;
 }
 
-void Game::reset() {
-  grid.initialize();
+void Game::Reset() {
+  grid.Initialize();
   blocksToChooseFrom = allPossibleBlocks;
-  currentBlock = getRandomBlock();
-  nextBlock = getRandomBlock();
+  currentBlock = GetRandomBlock();
+  nextBlock = GetRandomBlock();
   score = 0;
 }
 
-void Game::updateScore(int linesCleared, int moveDownPoints) {
+void Game::UpdateScore(int linesCleared, int moveDownPoints) {
   switch (linesCleared) {
   case 1:
     score += 100;
@@ -169,8 +169,8 @@ bool TimeElapsed(double interval) {
   return false;
 }
 
-void Game::tick() {
+void Game::Tick() {
   if (!isGameOver && TimeElapsed(0.2)) {
-    moveBlockDown();
+    MoveBlockDown();
   }
 }

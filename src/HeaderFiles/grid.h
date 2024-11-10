@@ -7,22 +7,22 @@
 class Grid {
 public:
   Grid();
-  void initialize();
-  void draw();
-  void debug();
+  void Initialize();
+  void Draw();
+  void Debug();
   int grid[20][10];
   std::vector<Color> colours = cellColours;
 
-  bool isOutOfBounds(int row, int column);
-  bool isCellEmpty(int row, int column);
-  int clearFullRows();
+  bool IsOutOfBounds(int row, int column);
+  bool IsCellEmpty(int row, int column);
+  int ClearFullRows();
 
 private:
   int rowCount = 20;
   int colCount = 10;
   int cellSize = 30;
 
-  bool isRowFull(int row);
-  void clearRow(int row);
-  void moveRowDown(int row, int rowOffset);
+  bool IsRowFull(int row);
+  void ClearRow(int row);
+  void MoveRowDown(int row, int rowOffset);
 };

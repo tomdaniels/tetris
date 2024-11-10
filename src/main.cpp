@@ -17,9 +17,9 @@ int main() {
     BeginDrawing();
     ClearBackground(deepBlue);
 
-    game.handleInput();
-    game.tick();
-    game.render();
+    game.HandleInput();
+    game.Tick();
+    game.Render();
 
     EndDrawing();
   }

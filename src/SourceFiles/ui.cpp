@@ -4,13 +4,13 @@
 #include <cstdio>
 #include <raylib.h>
 
-void UI::paint(int score, Block nextBlock, bool isGameOver) {
-  drawScore(score);
-  drawNextBlock(nextBlock);
-  drawGameOver(isGameOver);
+void UI::Paint(int score, Block nextBlock, bool isGameOver) {
+  DrawScore(score);
+  DrawNextBlock(nextBlock);
+  DrawGameOver(isGameOver);
 }
 
-void UI::drawScore(int score) {
+void UI::DrawScore(int score) {
   DrawText("Score", 360, 15, 38, WHITE);
   DrawRectangleRounded({320, 55, 200, 60}, 0.3, 6, lightBlue);
 
@@ -20,23 +20,23 @@ void UI::drawScore(int score) {
   DrawText(scoreText, 360 + (120 - textWidth) / 2, 65, 38, WHITE);
 }
 
-void UI::drawNextBlock(Block nextBlock) {
+void UI::DrawNextBlock(Block nextBlock) {
   DrawText("Next", 375, 175, 38, WHITE);
   DrawRectangleRounded({320, 215, 200, 180}, 0.3, 6, lightBlue);
 
   switch (nextBlock.id) {
   case 3:
-    nextBlock.draw(275, 285);
+    nextBlock.Draw(275, 285);
     break;
   case 4:
-    nextBlock.draw(275, 270);
+    nextBlock.Draw(275, 270);
     break;
   default:
-    nextBlock.draw(290, 270);
+    nextBlock.Draw(290, 270);
   }
 }
 
-void UI::drawGameOver(bool isGameOver) {
+void UI::DrawGameOver(bool isGameOver) {
   if (isGameOver) {
     DrawText("Game Over!", 320, 450, 38, WHITE);
   }
