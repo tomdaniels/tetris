@@ -1,8 +1,8 @@
 #pragma once
 
-#include "blocks.cpp"
-#include "grid.h"
-#include "ui.h"
+#include "../HeaderFiles/grid.h"
+#include "../HeaderFiles/ui.h"
+#include "../SourceFiles/blocks.cpp"
 
 class Game {
 public:

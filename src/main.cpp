@@ -1,5 +1,5 @@
-#include "colours.h"
-#include "game.h"
+#include "HeaderFiles/colours.h"
+#include "HeaderFiles/game.h"
 #include <cstdio>
 #include <raylib.h>
 

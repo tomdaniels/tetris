@@ -1,7 +1,7 @@
-#include "ui.h"
-#include "block.h"
-#include "colours.h"
-#include <iostream>
+#include "../HeaderFiles/ui.h"
+#include "../HeaderFiles/block.h"
+#include "../HeaderFiles/colours.h"
+#include <cstdio>
 #include <raylib.h>
 
 void UI::paint(int score, Block nextBlock, bool isGameOver) {

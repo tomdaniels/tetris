@@ -1,6 +1,7 @@
 #pragma once
 
 #include "block.h"
+
 class UI {
 public:
   void paint(int score, Block nextBlock, bool isGameOver);

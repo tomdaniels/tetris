@@ -1,5 +1,5 @@
-#include "game.h"
-#include <random>
+#include "../HeaderFiles/game.h"
+#include <cstdlib>
 #include <raylib.h>
 #include <vector>
 
