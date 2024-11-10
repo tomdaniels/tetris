@@ -1,4 +1,4 @@
-#include "../HeaderFiles/position.h"
+#include "position.h"
 
 Position::Position(int row, int column) {
   this->row = row;

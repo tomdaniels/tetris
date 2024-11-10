@@ -1,6 +1,6 @@
-#include "../HeaderFiles/ui.h"
-#include "../HeaderFiles/block.h"
-#include "../HeaderFiles/colours.h"
+#include "ui.h"
+#include "block.h"
+#include "colours.h"
 #include <cstdio>
 #include <raylib.h>
 

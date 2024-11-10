@@ -1,4 +1,4 @@
-#include "../HeaderFiles/block.h"
+#include "block.h"
 #include <raylib.h>
 #include <vector>
 

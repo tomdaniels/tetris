@@ -1,4 +1,4 @@
-#include "../HeaderFiles/game.h"
+#include "game.h"
 #include <cstdlib>
 #include <raylib.h>
 #include <vector>

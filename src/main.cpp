@@ -1,5 +1,5 @@
-#include "HeaderFiles/colours.h"
-#include "HeaderFiles/game.h"
+#include "game_parts/colours.h"
+#include "game_parts/game.h"
 #include <cstdio>
 #include <raylib.h>
 
